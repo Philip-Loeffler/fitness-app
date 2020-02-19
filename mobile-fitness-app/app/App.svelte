@@ -3,17 +3,23 @@
     </actionBar>
     <stackLayout class="p-20">
         <label text="Tap the button" class="h1 text-center"/>
-        <button text="TAP" on:tap="{ onTap }" class="-primary -active"/>
-        <label text="{ message }" class="h2 text-center" textWrap="true"/>
+        <button text="TAP" on:tap="{ tapForCardio }" class="-primary -active"/>
+        <label text="{ randomWork }" class="h2 text-center" textWrap="true"/>
     </stackLayout>
 </page>
 
 <script>
-    let counter = 42;
-    let message;
-    $: message = (counter <= 0) 
-                    ? "Hoorraaay! You unlocked the Svelte-Native clicker achievement!"
-                    : `${counter} taps left`
-    
-    const onTap = () => counter--;
+const cardio = [
+    'swimming',
+    'biking',
+    'running',
+    'boxing',
+    'HIIT'
+];
+
+var randomWork;
+
+function tapForCardio() {
+    this.randomWork = cardio[Math.floor(Math.random()*cardio.length)];
+}
 </script>
